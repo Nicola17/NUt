@@ -8,20 +8,20 @@
 namespace nut{
 
 	template <class Ex>
-	inline void checkAndThrow(bool v, const std::string& text){
+	inline void CheckAndThrow(bool v, const std::string& text){
 		if(!v){
 			throw Ex(text);
 		}
 	}
-	inline void checkAndThrowLogic(bool v, const std::string& text){
-		checkAndThrow<std::logic_error>(v,text);
+	inline void CheckAndThrowLogic(bool v, const std::string& text){
+		CheckAndThrow<std::logic_error>(v,text);
 	}
-	inline void checkAndThrowRuntime(bool v, const std::string& text){
-		checkAndThrow<std::runtime_error>(v,text);	
+	inline void CheckAndThrowRuntime(bool v, const std::string& text){
+		CheckAndThrow<std::runtime_error>(v,text);	
 	}
 
 	template <class Ex>
-	inline void checkAndThrow(bool v, const std::string& text, const std::string& file_name, int line){
+	inline void CheckAndThrow(bool v, const std::string& text, const std::string& file_name, int line){
 		if(!v){
 			std::stringstream ss;
 			ss << text << std::endl;
@@ -30,11 +30,11 @@ namespace nut{
 			throw Ex(ss.str());
 		}
 	}
-	inline void checkAndThrowLogic(bool v, const std::string& text, const std::string& file_name, int line){
-		checkAndThrow<std::logic_error>(v,text,file_name,line);
+	inline void CheckAndThrowLogic(bool v, const std::string& text, const std::string& file_name, int line){
+		CheckAndThrow<std::logic_error>(v,text,file_name,line);
 	}
-	inline void checkAndThrowRuntime(bool v, const std::string& text, const std::string& file_name, int line){
-		checkAndThrow<std::runtime_error>(v,text,file_name,line);	
+	inline void CheckAndThrowRuntime(bool v, const std::string& text, const std::string& file_name, int line){
+		CheckAndThrow<std::runtime_error>(v,text,file_name,line);	
 	}
 	
 }
