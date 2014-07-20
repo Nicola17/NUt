@@ -120,7 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\test\errors.h" />
+    <ClInclude Include="..\..\..\test\helpers.h" />
     <ClInclude Include="..\..\..\test\log.h" />
+    <ClInclude Include="..\..\..\test\timings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

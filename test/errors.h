@@ -11,35 +11,35 @@
 TEST_CASE( "check and throw exception if needed", "[errors]" ) {
 
 	SECTION("a valid logical invariant don't throw an exception"){
-		REQUIRE_NOTHROW(nut::checkAndThrow<std::logic_error>(0 == 0,"ok"));
+		REQUIRE_NOTHROW(nut::CheckAndThrow<std::logic_error>(0 == 0,"ok"));
 	}
 
 	SECTION("a logical error must throw an exception"){
-		REQUIRE_THROWS(nut::checkAndThrow<std::logic_error>(0 == 1,"nope"));
+		REQUIRE_THROWS(nut::CheckAndThrow<std::logic_error>(0 == 1,"nope"));
 	}
 
-	SECTION("a valid logical invariant don't throw an exception (checkAndThrowLogic)"){
-		REQUIRE_NOTHROW(nut::checkAndThrowLogic(0 == 0,"ok"));
+	SECTION("a valid logical invariant don't throw an exception (CheckAndThrowLogic)"){
+		REQUIRE_NOTHROW(nut::CheckAndThrowLogic(0 == 0,"ok"));
 	}
 
-	SECTION("a logical error must throw an exception (checkAndThrowLogic)"){
-		REQUIRE_THROWS(nut::checkAndThrowLogic(0 == 1,"nope"));
+	SECTION("a logical error must throw an exception (CheckAndThrowLogic)"){
+		REQUIRE_THROWS(nut::CheckAndThrowLogic(0 == 1,"nope"));
 	}
 
-	SECTION("a valid logical invariant don't throw an exception (checkAndThrowRuntime)"){
-		REQUIRE_NOTHROW(nut::checkAndThrowRuntime(0 == 0,"ok"));
+	SECTION("a valid logical invariant don't throw an exception (CheckAndThrowRuntime)"){
+		REQUIRE_NOTHROW(nut::CheckAndThrowRuntime(0 == 0,"ok"));
 	}
 
-	SECTION("a logical error must throw an exception (checkAndThrowRuntime)"){
-		REQUIRE_THROWS(nut::checkAndThrowRuntime(0 == 1,"nope"));
+	SECTION("a logical error must throw an exception (CheckAndThrowRuntime)"){
+		REQUIRE_THROWS(nut::CheckAndThrowRuntime(0 == 1,"nope"));
 	}
 
-	SECTION("checkAndThrowLogic must launch the right exception type"){
-		REQUIRE_THROWS_AS(nut::checkAndThrowLogic(0 == 1,"logic nope"),std::logic_error);
+	SECTION("CheckAndThrowLogic must launch the right exception type"){
+		REQUIRE_THROWS_AS(nut::CheckAndThrowLogic(0 == 1,"logic nope"),std::logic_error);
 	}
 
-	SECTION("checkAndThrowRuntime must launch the right exception type"){
-		REQUIRE_THROWS_AS(nut::checkAndThrowRuntime(0 == 1,"logic nope"),std::runtime_error);
+	SECTION("CheckAndThrowRuntime must launch the right exception type"){
+		REQUIRE_THROWS_AS(nut::CheckAndThrowRuntime(0 == 1,"logic nope"),std::runtime_error);
 	}
 
 }
@@ -51,35 +51,35 @@ TEST_CASE( "check and throw exception if needed", "[errors]" ) {
 TEST_CASE( "check and throw exception if needed (with file and line)", "[errors]" ) {
 
 	SECTION("a valid logical invariant don't throw an exception"){
-		REQUIRE_NOTHROW(nut::checkAndThrow<std::logic_error>(0 == 0,"ok",__FILE__,__LINE__));
+		REQUIRE_NOTHROW(nut::CheckAndThrow<std::logic_error>(0 == 0,"ok",__FILE__,__LINE__));
 	}
 
 	SECTION("a logical error must throw an exception"){
-		REQUIRE_THROWS(nut::checkAndThrow<std::logic_error>(0 == 1,"nope",__FILE__,__LINE__));
+		REQUIRE_THROWS(nut::CheckAndThrow<std::logic_error>(0 == 1,"nope",__FILE__,__LINE__));
 	}
 
-	SECTION("a valid logical invariant don't throw an exception (checkAndThrowLogic)"){
-		REQUIRE_NOTHROW(nut::checkAndThrowLogic(0 == 0,"ok",__FILE__,__LINE__));
+	SECTION("a valid logical invariant don't throw an exception (CheckAndThrowLogic)"){
+		REQUIRE_NOTHROW(nut::CheckAndThrowLogic(0 == 0,"ok",__FILE__,__LINE__));
 	}
 
-	SECTION("a logical error must throw an exception (checkAndThrowLogic)"){
-		REQUIRE_THROWS(nut::checkAndThrowLogic(0 == 1,"nope",__FILE__,__LINE__));
+	SECTION("a logical error must throw an exception (CheckAndThrowLogic)"){
+		REQUIRE_THROWS(nut::CheckAndThrowLogic(0 == 1,"nope",__FILE__,__LINE__));
 	}
 
-	SECTION("a valid logical invariant don't throw an exception (checkAndThrowRuntime)"){
-		REQUIRE_NOTHROW(nut::checkAndThrowRuntime(0 == 0,"ok",__FILE__,__LINE__));
+	SECTION("a valid logical invariant don't throw an exception (CheckAndThrowRuntime)"){
+		REQUIRE_NOTHROW(nut::CheckAndThrowRuntime(0 == 0,"ok",__FILE__,__LINE__));
 	}
 
-	SECTION("a logical error must throw an exception (checkAndThrowRuntime)"){
-		REQUIRE_THROWS(nut::checkAndThrowRuntime(0 == 1,"nope",__FILE__,__LINE__));
+	SECTION("a logical error must throw an exception (CheckAndThrowRuntime)"){
+		REQUIRE_THROWS(nut::CheckAndThrowRuntime(0 == 1,"nope",__FILE__,__LINE__));
 	}
 
-	SECTION("checkAndThrowLogic must launch the right exception type"){
-		REQUIRE_THROWS_AS(nut::checkAndThrowLogic(0 == 1,"logic nope",__FILE__,__LINE__),std::logic_error);
+	SECTION("CheckAndThrowLogic must launch the right exception type"){
+		REQUIRE_THROWS_AS(nut::CheckAndThrowLogic(0 == 1,"logic nope",__FILE__,__LINE__),std::logic_error);
 	}
 
-	SECTION("checkAndThrowRuntime must launch the right exception type"){
-		REQUIRE_THROWS_AS(nut::checkAndThrowRuntime(0 == 1,"logic nope",__FILE__,__LINE__),std::runtime_error);
+	SECTION("CheckAndThrowRuntime must launch the right exception type"){
+		REQUIRE_THROWS_AS(nut::CheckAndThrowRuntime(0 == 1,"logic nope",__FILE__,__LINE__),std::runtime_error);
 	}
 
 }
