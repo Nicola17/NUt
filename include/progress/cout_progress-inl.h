@@ -27,7 +27,7 @@ namespace nut{
     	ss << "| " << percentage;
     	log_.Display(ss.str());
     }
-    bool CoutProgress::IsCanceled(){
+    bool CoutProgress::IsCanceled()const{
 		return false;
     }
 	void CoutProgress::Reset(){

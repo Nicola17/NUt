@@ -6,21 +6,21 @@
 
 namespace nut{
 	template <class Logger>
-	inline void secureLog(Logger* logPtr, const std::string& text, bool enabled = true){
+	inline void SecureLog(Logger* logPtr, const std::string& text, bool enabled = true){
 		if(enabled){
 			if(logPtr!=nullptr){
-				logPtr->display(text);
+				logPtr->Display(text);
 			}
 		}
 	}
 
 	template <class Logger, class Data>
-	inline void secureLogValue(Logger* logPtr, const std::string& text, const Data& v, bool enabled = true){
+	inline void SecureLogValue(Logger* logPtr, const std::string& text, const Data& v, bool enabled = true){
 		if(enabled){
 			if(logPtr!=nullptr){
 				std::stringstream ss;
 				ss << text << ": " << v;
-				logPtr->display(ss.str());
+				logPtr->Display(ss.str());
 			}
 		}
 	}

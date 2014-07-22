@@ -12,18 +12,18 @@ namespace nut{
 	class ScopedTimer{
 	public:
 		//! start the timer
-		ScopedTimer(T& elapsedTime);
+		ScopedTimer(T& elapsed_time);
 		//! stop the timer and save the elapsedTime
 		~ScopedTimer();
 	
 	private:
-		Timer 	_timer;
-		T& 		_elapsedTime;
+		Timer 	timer_;
+		T& 		elapsed_time_;
 	};
 	
 }
 
 //Implementation
-#include "scoped_timers.inl"
+#include "scoped_timers-inl.h"
 
 #endif // SCOPED_TIMERS_H

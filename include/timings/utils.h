@@ -13,7 +13,7 @@ namespace nut{
 	typedef std::chrono::hours 			Hours;
 
 	template <class UnitOfMeas>
-	inline void sleepFor(unsigned int t){
+	inline void SleepFor(unsigned int t){
 		std::this_thread::sleep_for(UnitOfMeas(t));
 	}
 	

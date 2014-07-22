@@ -3,23 +3,24 @@
 
 #include <string>
 #include <sstream>
+#include "log/abstract_log.h"
 
 namespace nut{
 
 	//! shows log on the standar output stream
 	class CoutLog: public AbstractLog{
 	public:
-		CoutLog():_nCharWritten(0){}
+		CoutLog():num_written_chars_(0){}
 	    virtual ~CoutLog(){}
 		//! set the number of written characters to zero
-	    virtual void clear();
+	    virtual void Clear();
 		//! display some text on the logger
-	    virtual void display(const std::string& d);
+	    virtual void Display(const std::string& d);
 	    //! return the number of written character
-	    unsigned int writtenChars()const;
+	    unsigned int num_written_chars()const;
 	    	
 	private:
-		unsigned int _nCharWritten;
+		unsigned int num_written_chars_;
 	};
 	
 }

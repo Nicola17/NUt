@@ -10,7 +10,7 @@ namespace nut{
 		//! make a step forward
 	    virtual void MakeAStep()=0;
 		//! test if the execution is canceled
-	    virtual bool IsCanceled()=0;
+	    virtual bool IsCanceled()const=0;
 	};
 
 	//! Abstract interface for a general progress

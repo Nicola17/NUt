@@ -14,7 +14,7 @@ namespace nut{
 	    //! make a step forward
 	    virtual void MakeAStep();
 		//! test if the execution is canceled
-	    virtual bool IsCanceled();
+	    virtual bool IsCanceled()const;
 	    //! reset the progress
 		virtual void Reset();
 		//! set the maximum value on the UI

@@ -8,24 +8,24 @@ namespace nut{
 		//! Create an unitialized object
 		InitializationHelper();
 		//! Initialize the helper
-		void initialize();
+		void Initialize();
 		//! Deinitialize the helper
-		void deinitialize();
+		void Uninitialize();
 		//! Throw a logic error if the helper is not initialized
-		void checkInitialized()const;
+		void CheckInitialized()const;
 		//! Throw a logic error if the helper is initialized
-		void checkUninitialized()const;
+		void CheckUninitialized()const;
 		//! Return the helper state
-		bool isInitialized()const;
+		bool IsInitialized()const;
 
 	private:
-		bool _initialized;
+		bool initialized_;
 	};
 
 	
 }
 
 //Implementation
-#include "initialization_helper.inl"
+#include "initialization_helper-inl.h"
 
 #endif // INITIALIZATION_HELPER_H

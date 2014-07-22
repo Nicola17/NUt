@@ -10,33 +10,33 @@ namespace nut{
 
 	class Timer{
 	private:
-		typedef std::chrono::time_point<std::chrono::system_clock> time_point_type;
+		typedef std::chrono::time_point<std::chrono::system_clock> TimePoint;
 
 	public:
 		//! return the elapsed time
 		template <class UnitOfMeas>
-		double elapsedTime()const;
+		double ElapsedTime()const;
 		//! start the timer
-		void start();
+		void Start();
 		//! stop the timer
-		void stop();
+		void Stop();
 		//! return the timer condition
-		bool isStarted()const;
+		bool IsStarted()const;
 		//! return the availability of the elapsed time
-		bool isElapsedTimeAvailable()const;
+		bool IsElapsedTimeAvailable()const;
 
 	private:
-		time_point_type _start;
-		time_point_type _stop;
+		TimePoint start_;
+		TimePoint stop_;
 
-		InitializationHelper _startedIHelper;
-		InitializationHelper _timeAvailableIHelper;
+		InitializationHelper startedIHelper_;
+		InitializationHelper timeAvailableIHelper_;
 	};
 
 	
 }
 
 //Implementation
-#include "timers.inl"
+#include "timers-inl.h"
 
 #endif // TIMERS_H
