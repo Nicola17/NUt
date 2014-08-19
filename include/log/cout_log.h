@@ -26,6 +26,6 @@ namespace nut{
 }
 
 //Implementation
-#include "cout_log.inl"
+#include "cout_log-inl.h"
 
 #endif // COUT_LOG_H

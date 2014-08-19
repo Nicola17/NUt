@@ -24,6 +24,13 @@ namespace nut{
 			}
 		}
 	}
+
+	template <class Logger>
+	inline void SecureClear(Logger* logPtr){
+		if(logPtr!=nullptr){
+			logPtr->Clear();
+		}
+	}
 }
 
 #endif // LOG_HELPER_FUNCTIONS_H
