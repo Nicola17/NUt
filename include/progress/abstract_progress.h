@@ -9,6 +9,8 @@ namespace nut{
 	    virtual ~AbstractProgress(){}
 		//! make a step forward
 	    virtual void MakeAStep()=0;
+		//! make N steps forward
+	    virtual void MakeNSteps(unsigned int n)=0;
 		//! test if the execution is canceled
 	    virtual bool IsCanceled()const=0;
 	};

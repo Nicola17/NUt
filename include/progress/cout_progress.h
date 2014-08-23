@@ -13,6 +13,8 @@ namespace nut{
 	    virtual ~CoutProgress(){}
 	    //! make a step forward
 	    virtual void MakeAStep();
+		//! make N steps forward
+	    virtual void MakeNSteps(unsigned int steps);
 		//! test if the execution is canceled
 	    virtual bool IsCanceled()const;
 	    //! reset the progress

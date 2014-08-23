@@ -8,7 +8,7 @@
 #include "errors/invariants.h"
 namespace nut{
 	
-	ProgressReduction::ProgressReduction(AbstractProgress* external_progress, unsigned int num_external_steps):
+	inline ProgressReduction::ProgressReduction(AbstractProgress* external_progress, unsigned int num_external_steps):
 		external_progress_(external_progress),
 		num_external_steps_(num_external_steps),
 		num_internal_steps_(0),
@@ -17,7 +17,7 @@ namespace nut{
 		internal_steps_(0)
 	{
 	}
-	void ProgressReduction::MakeAStep(){
+	inline void ProgressReduction::MakeAStep(){
 		if(external_progress_ == nullptr)
 			return;
 #if defined(_OPENMP)
@@ -35,20 +35,26 @@ namespace nut{
 		const double to_increment(internal_steps_ - last_emitted_step_);
 
 		assert(to_increment >= 0);
-		for(unsigned int i = 0; i < static_cast<unsigned int>(to_increment) && last_emitted_step_ <= num_external_steps_; ++i){
-			external_progress_->MakeAStep();
-			++last_emitted_step_;
+
+		unsigned int to_increment_int (to_increment);
+		external_progress_->MakeNSteps(to_increment_int);
+		last_emitted_step_ += to_increment_int;
+	}
+	inline void ProgressReduction::MakeNSteps(unsigned int n){
+		for(unsigned int i = 0; i < n; ++i){
+			MakeAStep();
 		}
 	}
-	bool ProgressReduction::IsCanceled()const{
+
+	inline bool ProgressReduction::IsCanceled()const{
 		return (external_progress_ != nullptr)?external_progress_->IsCanceled():false;
 	}
-	void ProgressReduction::Reset(){
+	inline void ProgressReduction::Reset(){
 		last_emitted_step_ = 0;
 		num_internal_steps_ = 0;
 		internal_steps_ = 0.;
 	}
-	void ProgressReduction::Finalize(){
+	inline void ProgressReduction::Finalize(){
 		PRECONDITION(last_emitted_step_ <= num_external_steps_);
 		if(external_progress_ == nullptr) 
 			return;
@@ -61,33 +67,33 @@ namespace nut{
 		internal_steps_ = last_emitted_step_;
 	}
 
-	void ProgressReduction::set_num_external_steps(unsigned int steps){
+	inline void ProgressReduction::set_num_external_steps(unsigned int steps){
 		num_external_steps_ = steps;
 		reduction_ratio_ =(num_internal_steps_!=0)?double(num_external_steps_)/num_internal_steps_:0;
 	}
-	void ProgressReduction::set_num_internal_steps(unsigned int steps){
+	inline void ProgressReduction::set_num_internal_steps(unsigned int steps){
 		num_internal_steps_ = steps;
 		reduction_ratio_ =(num_internal_steps_!=0)?double(num_external_steps_)/num_internal_steps_:0;
 	}
-	void ProgressReduction::set_external_progress(AbstractProgress* prg){
+	inline void ProgressReduction::set_external_progress(AbstractProgress* prg){
 		external_progress_ = prg;
 	}
 
 
-	unsigned int ProgressReduction::num_external_steps()const{
+	inline unsigned int ProgressReduction::num_external_steps()const{
 		return num_external_steps_;
 	}
-	unsigned int ProgressReduction::num_internal_steps()const{
+	inline unsigned int ProgressReduction::num_internal_steps()const{
 		return num_internal_steps_;
 	}
-	double ProgressReduction::reduction_ratio()const{
+	inline double ProgressReduction::reduction_ratio()const{
 		return reduction_ratio_;
 	}
 
-	AbstractProgress* ProgressReduction::external_progress(){
+	inline AbstractProgress* ProgressReduction::external_progress(){
 		return external_progress_;
 	}
-	const AbstractProgress* ProgressReduction::external_progress()const{
+	inline const AbstractProgress* ProgressReduction::external_progress()const{
 		return external_progress_;
 	}
 

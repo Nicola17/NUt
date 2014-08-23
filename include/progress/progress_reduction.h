@@ -12,6 +12,8 @@ namespace nut{
 	    virtual ~ProgressReduction(){}
 	    //! make a step forward
 	    virtual void MakeAStep();
+		//! make N steps forward
+		void MakeNSteps(unsigned int n);
 		//! test if the execution is canceled
 	    virtual bool IsCanceled()const;
 	    //! reset the class
@@ -39,6 +41,27 @@ namespace nut{
 
 		AbstractProgress* external_progress_;
 	};
+
+	inline void SecureMakeAStep(ProgressReduction* prg){
+		if(prg!=nullptr){
+			prg->MakeAStep();
+		}
+	}
+	inline void SecureFinalize(ProgressReduction* prg){
+		if(prg!=nullptr){
+			prg->Finalize();
+		}
+	}
+	inline void SecureSetInternalSteps(ProgressReduction* prg, unsigned int steps){
+		if(prg!=nullptr){
+			prg->set_num_internal_steps(steps);
+		}
+	}
+	inline void SecureSetExternalSteps(ProgressReduction* prg, unsigned int steps){
+		if(prg!=nullptr){
+			prg->set_num_external_steps(steps);
+		}
+	}
 
 }
 
