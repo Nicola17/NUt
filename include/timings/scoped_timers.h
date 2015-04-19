@@ -20,6 +20,19 @@ namespace nut{
 		Timer 	timer_;
 		T& 		elapsed_time_;
 	};
+
+	template <class T, class UnitOfMeas = Milliseconds>
+	class ScopedIncrementalTimer{
+	public:
+		//! start the timer
+		ScopedIncrementalTimer(T& elapsed_time);
+		//! stop the timer and save the elapsedTime
+		~ScopedIncrementalTimer();
+	
+	private:
+		Timer 	timer_;
+		T& 		elapsed_time_;
+	};
 	
 }
 
